@@ -18,6 +18,11 @@ alias psr='ps aux | grep ruby'
 # Moving around
 alias cdb='cd -'
 
+# Mount/Unmount for mac os
+alias mount='diskutil mount'
+alias umount='diskutil umount'
+
+
 # Show human friendly numbers and colors
 alias df='df -h'
 alias ll='ls -lGh'
