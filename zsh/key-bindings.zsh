@@ -13,3 +13,13 @@ bindkey '^e' end-of-line
 insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
 bindkey "^s" insert-sudo
+
+# Go backward one word
+bindkey '^w' backward-word
+
+# Go forward one word
+bindkey '^e' forward-word
+
+# Delete current word
+bindkey '^q' delete-word
+
