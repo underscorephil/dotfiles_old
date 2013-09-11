@@ -21,5 +21,5 @@ bindkey '^w' backward-word
 bindkey '^e' forward-word
 
 # Delete current word
-bindkey '^q' delete-word
+bindkey '^q' backward-delete-word
 
