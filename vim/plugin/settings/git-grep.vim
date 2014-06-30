@@ -20,5 +20,5 @@ vnoremap K :call CloseSingleConque()<CR>:<C-U>execute GitGrep(GetVisual())<CR>
 nnoremap ,K viwf!:<C-U>execute GitGrep(GetVisual())<CR>
 
 "grep for 'def foo'
-nnoremap <silent> ,gd :GitGrep 'def <cword>'<CR>
+nnoremap <silent> ,gd :GitGrep '<cword>'<CR>
 
