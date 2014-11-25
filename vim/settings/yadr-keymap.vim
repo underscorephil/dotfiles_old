@@ -76,6 +76,7 @@ imap <C-a> <esc>wa
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
+nmap <silent> ,z :NERDTreeToggle<CR>
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
@@ -86,8 +87,8 @@ nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR
 
 "Move back and forth through previous and next buffers
 "with ,z and ,x
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
+"nnoremap <silent> ,z :bp<CR>
+"nnoremap <silent> ,x :bn<CR>
 
 " ==============================
 " Window/Tab/Split Manipulation
