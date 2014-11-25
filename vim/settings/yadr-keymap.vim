@@ -167,3 +167,4 @@ map <silent> ,hp :!open -a Safari %<CR><CR>
 map ,re :set colorcolumn=+1 tw=80 fo+=t wm=0 <CR>
 map ,er :set colorcolumn=0 tw=80 fo-=t wm=0 <CR>"
 
+nnoremap <silent> ,gd :GitGrep '<cword>'<CR>
