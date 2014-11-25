@@ -82,6 +82,8 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
 nmap <silent> ,qc :cclose<CR>
 nmap <silent> ,qo :copen<CR>
 
+nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR
+
 "Move back and forth through previous and next buffers
 "with ,z and ,x
 nnoremap <silent> ,z :bp<CR>
