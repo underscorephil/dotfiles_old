@@ -25,6 +25,9 @@ alias lla='ll -a'
 alias ls='ls -Gh'
 alias du='du -h -d 2'
 
+# Colormake
+alias make='colormake'
+
 # show me files matching "ls grep"
 alias lsg='ll | grep'
 
