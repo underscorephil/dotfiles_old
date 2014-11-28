@@ -20,7 +20,8 @@ alias cdb='cd -'
 
 # Show human friendly numbers and colors
 alias df='df -h'
-alias ll='ls -alGh'
+alias ll='ls -lGh'
+alias lla='ll -a'
 alias ls='ls -Gh'
 alias du='du -h -d 2'
 
