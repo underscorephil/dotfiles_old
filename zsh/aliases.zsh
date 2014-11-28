@@ -12,6 +12,9 @@ elif [[ $unamestr == 'Darwin' ]]; then
   platform='darwin'
 fi
 
+# Colormake
+alias make='colormake'
+
 # YADR support
 alias yav='yadr vim-add-plugin'
 alias ydv='yadr vim-delete-plugin'
