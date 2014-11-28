@@ -20,7 +20,7 @@ vnoremap K :<C-U>execute "Ag " . GetVisual()<CR>
 nnoremap ,K viwf!:<C-U>execute "Ag " . GetVisual()<CR>
 
 "grep for 'def foo'
-nnoremap <silent> ,gd :Ag 'def <cword>'<CR>
+nnoremap <silent> ,gd :Ag '<cword>'<CR>
 
 ",gg = Grep! - using Ag the silver searcher
 " open up a grep line, with a quote started for the search
