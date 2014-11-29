@@ -101,7 +101,9 @@ imap <C-a> <esc>wa
 
 " ==== NERD tree
 " Cmd-Shift-N for nerd tree
-nmap <D-N> :NERDTreeToggle<CR>
+"nmap <D-N> :NERDTreeToggle<CR>
+nmap <silent> ,z :NERDTreeToggle<CR>
+
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
 
@@ -129,8 +131,8 @@ imap <D-/> <Esc>:TComment<CR>i
 
 "Move back and forth through previous and next buffers
 "with ,z and ,x
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
+"nnoremap <silent> ,z :bp<CR>
+"nnoremap <silent> ,x :bn<CR>
 
 " ==============================
 " Window/Tab/Split Manipulation
