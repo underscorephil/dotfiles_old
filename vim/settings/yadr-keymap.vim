@@ -109,8 +109,8 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
-nmap <silent> ,qc :cclose<CR>
-nmap <silent> ,qo :copen<CR>
+nmap <silent> ,qw :cclose<CR>
+nmap <silent> ,wq :copen<CR>
 
 " move up/down quickly by using Cmd-j, Cmd-k
 " which will move us around by functions
