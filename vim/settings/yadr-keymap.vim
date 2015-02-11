@@ -79,8 +79,8 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
-nmap <silent> ,qc :cclose<CR>
-nmap <silent> ,qo :copen<CR>
+nmap <silent> ,qw :cclose<CR>
+nmap <silent> ,wq :copen<CR>
 
 "Move back and forth through previous and next buffers
 "with ,z and ,x
