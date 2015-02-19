@@ -36,6 +36,12 @@ task :install => [:submodule_init, :submodules] do
   success_msg("installed")
 end
 
+task :install_mjolnir do
+  if want_to_install?('mjolnir')
+    install_mjolnir
+  end
+end
+
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
@@ -248,6 +254,16 @@ def ask(message, values)
   end
   selection = selection.to_i-1
   values[selection]
+end
+
+def install_mjolnir
+  puts
+  puts "Installing Mjolnir"
+
+  # Install my version of mjolnir
+  # TODO: Improve Mjolnir installer
+
+  run %{ ln -nfs "$HOME/.yadr/mjolnir_config" "${ZDOTDIR:-$HOME}/.mjolnir" }
 end
 
 def install_prezto
