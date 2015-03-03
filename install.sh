@@ -6,6 +6,9 @@ if [ ! -d "$HOME/.yadr" ]; then
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     rake install
+
+    ## Install specific packages
+    sudo ./blueutil/Install.command
 else
     echo "YADR is already installed"
 fi
