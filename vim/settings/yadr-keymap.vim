@@ -159,6 +159,6 @@ map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 map <silent> ,hp :!open -a Safari %<CR><CR>
 
 " Auto wrapping - txt friendly vi, re
-noremap ,re :set colorcolumn=+1 tw=80 fo=cqt wm=0 <CR>
-map ,ree :set colorcolumn=+1 tw=72 fo-=t wm=0 <CR>
+noremap ,re :set formatoptions+=t colorcolumn=+1 tw=80 <CR>
+map ,ree :set formatoptions+=t colorcolumn=+1 tw=72 <CR>
 noremap ,er :set colorcolumn=0 fo-=t <CR>
