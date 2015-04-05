@@ -87,7 +87,7 @@ screenWatcher:start()
 -- Launch Applications ========================================
 	hotkey.bind(cmdshift, "T", function() application.launchOrFocus("iTerm") end)
 	hotkey.bind(cmdshift, "A", function() application.launchOrFocus("Alfred 2") end)
-	hotkey.bind(cmdshift, "R", hs.reload)
+	hotkey.bind(mashshift, "R", hs.reload)
 
 -- Key bindings ===============================================
 	hotkey.bind(mashshift, 'F', function() applyLayout(work_layout) end)
