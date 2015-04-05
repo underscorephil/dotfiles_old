@@ -3,10 +3,14 @@
 --
 -- Inspiration on:
 --	- Tristan Hume's configuration
+--	- Chris Jones' configuration
 
--- require("hs._asm.ipc")
 
--- Load Extensions
+--TODO list
+--	- Define layouts for all applications
+--
+--
+-- Load Extensions ============================================
 local application = hs.application
 local window      = hs.window
 local hotkey      = hs.hotkey
@@ -18,17 +22,21 @@ local tiling = hs.tiling
 local screen = hs.screen
 local hints = hs.hints
 local appfinder = hs.appfinder
+local layout = hs.layout
 
--- Load own extensions
+-- Load own extensions ========================================
 require "layouts"
 require "screen_detector"
 require "grid_setup"
 
--- Set up hotkey combinations
+-- Set up hotkey combinations =================================
 local mash      = {"cmd", "alt", "ctrl"}
 local mashshift = {"cmd", "alt", "shift"}
 local cmdshift = {"cmd",  "shift"}
 local altshift = {"alt", "shift"}
+
+--Watcherts and internal objects ==============================
+local hsConfigFileWatcher = nil
 
 -- Internal operations ========================================
 local gridset = function(frame)
@@ -53,31 +61,36 @@ function focusSaved()
 	end
 end
 
--- Actual configuration =======================================
+function reloadConfig(paths)
+	doReload = false
+	for _,file in pairs(paths) do
+		if file:sub(-4) == ".lua" then
+			print("A lua file changed, doing reload")
+						doReload = true
+		end
+	end
+	if not doReload then
+		print("No lua file changed, skipping reload")
+		return
+	end
 
--- if nscreens == 1 then
-	-- fnutils.each(fullApps, function(app) layout[app] = {1, gobig} end)
-	-- fnutils.each(rightApps, function(app) layout[app] = {1, goright} end)
-	-- fnutils.each(centerApps, function(app) layout[app] = {1, gomiddle} end)
--- elseif nscreens == 2 then
-	-- fnutils.each(fullApps, function(app) layout2[app] = {1, gobig} end)
--- else
-	-- alert.show("Layout not supported (yet) for > 2 screens", 3)
--- end
+	hs.reload()
+end
 
+-- Automatic Operations =======================================
+hsConfigFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
+hsConfigFileWatcher:start()
 
--- tiling.set('layouts', {
-  -- 'fullscreen', 'main-vertical', 'gp-vertical'
--- })
+screenWatcher = screen.watcher.new(reloadScreens)
+screenWatcher:start()
 
--- Launch Applications ======================
+-- Launch Applications ========================================
+	hotkey.bind(cmdshift, "T", function() application.launchOrFocus("iTerm") end)
+	hotkey.bind(cmdshift, "A", function() application.launchOrFocus("Alfred 2") end)
+	hotkey.bind(cmdshift, "R", hs.reload)
 
-hotkey.bind(cmdshift, "T", function() application.launchOrFocus("iTerm") end)
-
--- Key bindings =============================
-
-	-- Full Layout
-	hotkey.bind(mashshift, 'f', applyLayout(work_layout)) -- TODO
+-- Key bindings ===============================================
+	hotkey.bind(mashshift, 'F', function() applyLayout(work_layout) end)
 	hotkey.bind(mashshift, "B", function() tiling.cyclelayout() end)
 
 	hotkey.bind(mashshift, ';', saveFocus)
@@ -92,12 +105,8 @@ hotkey.bind(cmdshift, "T", function() application.launchOrFocus("iTerm") end)
 	hotkey.bind(altshift, 'right', gridset(goupright))
 	hotkey.bind(cmdshift, 'left',  gridset(godownleft))
 	hotkey.bind(cmdshift, 'right', gridset(godownright))
-	-- hotkey.bind(cmdalt, 'up', )
 
 	hotkey.bind(mashshift, 'M', gridset(gomiddle))
-
-	-- hotkey.bind(mash, 'N', grid.pushwindow_nextscreen)
-	-- hotkey.bind(mash, 'P', grid.pushwindow_prevscreen)
 
 	hotkey.bind(mashshift, 'J', grid.pushWindowDown)
 	hotkey.bind(mashshift, 'K', grid.pushWindowUp)

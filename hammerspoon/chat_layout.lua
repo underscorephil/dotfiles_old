@@ -10,9 +10,9 @@ require "layouts"
 require "screen_detector"
 
 if nscreens == 1 then
-	clapplyLayout(chat_layout_1)
+	applyLayout(work_layout)
 elseif nscreens == 2 then
-	clapplyLayout(chat_layout_1)
+	applyLayout(work_layout)
 else
 	alert.show("Layout not supported (yet) for > 2 screens", 3)
 end
