@@ -14,28 +14,61 @@
 require "grid_setup"
 require "screen_detector"
 
-display_laptop = 1
+display_primary = 1
+display_secondary = 2
+work_layout_present = 0
+work_layout = {}
 
+-- 1 screen
 communication_layout_1 = {
-	{"Calendar", nil, display_laptop, gomiddle},
-	{"Mail", nil, display_laptop, gobig},
-	{"Slack", nil, display_laptop, godownright},
+	{"Calendar", nil, display_primary, goleft},
+	{"Skype", nil, display_primary, godownleft},
+	{"Mail", nil, display_primary, gobig},
+	{"Slack", nil, display_primary, godownright},
+	{"Adium", nil, display_primary, godownleft},
 }
 
-work_layout = {}
-if nscreens == 1 then
-	--communications
-	for i = 0, #communication_layout_1, 1  do
-		table.insert(work_layout, communication_layout_1[i])
-	end
-elseif nscreens == 2 then
-	for i = 0, #communication_layout_2, 1  do
-		table.insert(work_layout, communication_layout_1[i])
-	end
-else
-	alert.show("Not supported > 2 screens", 1)
+productivity_layout_1 = {
+	{"OmniFocus", nil, display_primary, gobig},
+}
+
+-- 2 screens
+communication_layout_2 = {
+	{"Calendar", nil, display_secondary, goupleft},
+	{"Skype", nil, display_secondary, godownleft},
+	{"Mail", nil, display_secondary, goright},
+	{"Slack", nil, display_primary, godownright_omnifocus},
+	{"Adium", nil, display_primary, goupright_omnifocus},
+}
+
+productivity_layout_2 = {
+	{"OmniFocus", nil, display_primary, goleft_omnifocus},
+}
+
+function defineLayout()
+	work_layout = {}
+	if nscreens == 1 then
+		--communications
+		for i = 0, #communication_layout_1, 1  do
+			table.insert(work_layout, communication_layout_1[i])
+		end
+
+		for i = 0, #productivity_layout_1, 1 do
+			table.insert(work_layout, productivity_layout_1[i])
+		end
+	elseif nscreens == 2 then
+		for i = 0, #communication_layout_2, 1  do
+			table.insert(work_layout, communication_layout_2[i])
+		end
+
+		for i = 0, #productivity_layout_2, 1 do
+			table.insert(work_layout, productivity_layout_2[i])
+		end
+	else
+		alert.show("Not supported > 2 screens", 1)
 end
 
+end
 --TODO: Fix opening + applying layout in one single action
 function test(appName)
 	local app = nil
@@ -51,27 +84,31 @@ function test(appName)
 end
 
 function applyLayout(layout)
-	-- return function()
-		for n,_row in pairs(layout) do
-			local appName = _row[1]
-			local pos = _row[4]
-			local scr = _row[3]
-			local appExists = application.launchOrFocus(appName)
-			local app = nil
-			if appExists then
-				-- while not app do
-					app = appfinder.appFromName(appName)
-					-- alert.show("- App: " .. appName, 1)
-					if app then
-						-- alert.show("App: " .. appName, 1)
-						for i, win in ipairs(app:allWindows()) do
-							grid.set(win, pos, screens[scr])
-						end
-					-- else
-						-- test("Slack")
+	alert.show("3", 1)
+	for n,_row in pairs(layout) do
+		local appName = _row[1]
+		local pos = _row[4]
+		local scr = _row[3]
+		local appExists = application.launchOrFocus(appName)
+		local app = nil
+		if appExists then
+			-- while not app do
+				app = appfinder.appFromName(appName)
+				-- alert.show("- App: " .. appName, 1)
+				if app then
+					-- alert.show("App: " .. appName, 1)
+					for i, win in ipairs(app:allWindows()) do
+						grid.set(win, pos, screens[scr])
 					end
-				-- end
-			end
+				-- else
+					-- test("Slack")
+				end
+			-- end
 		end
-	-- end
+	end
+end
+
+function clApplyLayout(layout)
+	applyLayout(layout)
+	work_layout_present = 1
 end

@@ -84,13 +84,16 @@ hsConfigFileWatcher:start()
 screenWatcher = screen.watcher.new(reloadScreens)
 screenWatcher:start()
 
+defineLayout()
+
 -- Launch Applications ========================================
 	hotkey.bind(cmdshift, "T", function() application.launchOrFocus("iTerm") end)
 	hotkey.bind(cmdshift, "A", function() application.launchOrFocus("Alfred 2") end)
 	hotkey.bind(mashshift, "R", hs.reload)
 
 -- Key bindings ===============================================
-	hotkey.bind(mashshift, 'F', function() applyLayout(work_layout) end)
+	hotkey.bind(mashshift, 'F', function() clApplyLayout(work_layout) end)
+	hotkey.bind(mashshift, 'G', function() reloadScreens() end)
 	hotkey.bind(mashshift, "B", function() tiling.cyclelayout() end)
 
 	hotkey.bind(mashshift, ';', saveFocus)
@@ -99,7 +102,7 @@ screenWatcher:start()
 	hotkey.bind(mashshift, 'left', gridset(goleft))
 	hotkey.bind(mashshift, 'right', gridset(goright))
 	hotkey.bind(mashshift, 'up', grid.maximizeWindow)
-	hotkey.bind(mashshift, 'down',  grid.pushwindow_nextscreen)
+	hotkey.bind(mashshift, 'down',  grid.pushWindowNextScreen)
 
 	hotkey.bind(altshift, 'left',  gridset(goupleft))
 	hotkey.bind(altshift, 'right', gridset(goupright))
