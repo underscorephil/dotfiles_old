@@ -9,6 +9,7 @@
    local appfinder = hs.appfinder
    local layout = hs.layout
    local alert = hs.alert
+   local fnutils = hs.fnutils
 
 -- Load own extensions ========================================
 require "grid_setup"
@@ -38,7 +39,8 @@ communication_layout_2 = {
 	{"Skype", nil, display_secondary, godownleft},
 	{"Mail", nil, display_secondary, goright},
 	{"Slack", nil, display_primary, godownright_omnifocus},
-	{"Adium", nil, display_primary, goupright_omnifocus},
+	{"Adium", "Contacts", display_primary, goupright_adium_contact},
+	{"Adium", "Timeline", display_primary, goupright_adium_chat},
 }
 
 productivity_layout_2 = {
@@ -84,11 +86,11 @@ function test(appName)
 end
 
 function applyLayout(layout)
-	alert.show("3", 1)
 	for n,_row in pairs(layout) do
 		local appName = _row[1]
-		local pos = _row[4]
+		local window = _row[2]
 		local scr = _row[3]
+		local pos = _row[4]
 		local appExists = application.launchOrFocus(appName)
 		local app = nil
 		if appExists then
@@ -96,8 +98,13 @@ function applyLayout(layout)
 				app = appfinder.appFromName(appName)
 				-- alert.show("- App: " .. appName, 1)
 				if app then
-					-- alert.show("App: " .. appName, 1)
-					for i, win in ipairs(app:allWindows()) do
+					if _row[2] then
+						wins = fnutils.filter(app:allWindows(), function(win) return string.find(win:title(), _row[2]) end)
+					else
+						wins = app:allWindows()
+					end
+
+					for i,win in pairs(wins) do
 						grid.set(win, pos, screens[scr])
 					end
 				-- else
