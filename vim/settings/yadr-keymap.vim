@@ -84,8 +84,8 @@ nmap <silent> ,qo :copen<CR>
 
 "Move back and forth through previous and next buffers
 "with ,z and ,x
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
+" nnoremap <silent> ,z :bp<CR>
+" nnoremap <silent> ,x :bn<CR>
 
 " ==============================
 " Window/Tab/Split Manipulation
