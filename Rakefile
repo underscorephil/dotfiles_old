@@ -36,9 +36,13 @@ task :install => [:submodule_init, :submodules] do
   success_msg("installed")
 end
 
-task :install_mjolnir do
-  if want_to_install?('mjolnir')
-    install_mjolnir
+task :install_custom do
+  if want_to_install?('hammerspoon')
+    install_hammerspoon
+  end
+
+  if want_to_install?('iTunes Script')
+    install_iTunes_script
   end
 end
 
@@ -256,14 +260,30 @@ def ask(message, values)
   values[selection]
 end
 
-def install_mjolnir
+def install_hammerspoon
   puts
-  puts "Installing Mjolnir"
+  puts "Installing Hammerspoon"
 
-  # Install my version of mjolnir
-  # TODO: Improve Mjolnir installer
+  # Install my version of hammerspoon
+  run %{
+    git clone git@github.com:javigon/hammerspoon.git $HOME/git/hammerspoon
+  }
 
-  run %{ ln -nfs "$HOME/.yadr/mjolnir_config" "${ZDOTDIR:-$HOME}/.mjolnir" }
+  run %{
+    git clone git@github.com:javigon/hammerspoon_config.git $HOME/git/hammerspoon_config
+  }
+
+  run %{ ln -nfs "$HOME/git/hammerspoon_config" "$HOME/.hammerspoon" }
+end
+
+def install_iTunes_script
+  puts
+  puts "Installing iTunes Script"
+
+  # Install iTunes Script
+  run %{
+    git clone git@github.com:javigon/iTunesScriptableLibrary.git $HOME/git/itunes_script
+  }
 end
 
 def install_prezto
