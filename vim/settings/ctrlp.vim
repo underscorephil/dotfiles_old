@@ -20,8 +20,8 @@ let g:ctrlp_switch_buffer = 0
 
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
-let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlP<CR>
+" let g:ctrlp_map = ',t'
+" nnoremap <silent> ,t :CtrlP<CR>
 
 " Additional mapping for buffer search
 nnoremap <silent> ,b :CtrlPBuffer<cr>
