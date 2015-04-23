@@ -23,9 +23,6 @@ bindkey '^e' forward-word
 # Delete current word
 bindkey '^q' backward-delete-word
 
-
-if [[ "$(uname)" == "Darwin" ]]; then
-	bindkey '^[[A' history-substring-search-up
-	bindkey '^[[B' history-substring-search-down
-fi
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
