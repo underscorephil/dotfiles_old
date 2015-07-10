@@ -113,5 +113,9 @@ set sidescroll=1
 set lazyredraw
 set ttyfast
 
+
+" ================ Wrapping ========================
+set formatoptions+=t colorcolumn=+1 tw=80
+
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
