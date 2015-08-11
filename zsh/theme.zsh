@@ -1,1 +1,1 @@
-prompt purephil
+prompt pure
