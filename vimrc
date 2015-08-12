@@ -64,9 +64,9 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 filetype plugin on
 filetype indent on
