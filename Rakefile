@@ -28,11 +28,9 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_prezto"].execute
   Rake::Task["install_custom"].execute
 
-  if RUBY_PLATFORM.downcase.include?("darwin")
-		install_fonts 
-		install_term_theme
-		install_homebrew
-	end
+  install_fonts if RUBY_PLATFORM.downcase.include?("darwin")
+
+  install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
   run_bundle_config
 
@@ -40,7 +38,9 @@ task :install => [:submodule_init, :submodules] do
 end
 
 task :install_prezto do
-  install_prezto
+  if want_to_install?('zsh enhancements & prezto')
+    install_prezto
+  end
 end
 
 task :update do
