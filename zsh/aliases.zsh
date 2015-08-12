@@ -157,3 +157,5 @@ alias srdmt='spring rake db:migrate db:test:prepare'
 # Phil
 
 alias http="http --pretty=all"
+alias pycclean='find . -name "*.pyc" -exec rm {} \;'
+
