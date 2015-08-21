@@ -26,7 +26,7 @@ alias ls='ls -Gha'
 alias du='du -h -d 2'
 
 # Colormake
-alias make='colormake'
+#alias make='colormake'
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
@@ -158,4 +158,8 @@ alias srdmt='spring rake db:migrate db:test:prepare'
 
 alias http="http --pretty=all"
 alias pycclean='find . -name "*.pyc" -exec rm {} \;'
+alias history='history -5000'
 
+# Virtualenv
+
+alias avenv="source ./venv/bin/activate"
