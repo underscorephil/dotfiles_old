@@ -1,7 +1,7 @@
 " Make it beautiful - colors and fonts
 
 " http://ethanschoonover.com/solarized/vim-colors-solarized
-colorscheme solarized
+colorscheme Tomorrow-Night-Eighties
 set background=dark
 
 if has("gui_running")

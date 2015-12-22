@@ -15,9 +15,6 @@ alias psa="ps aux"
 alias psg="ps aux | grep "
 alias psr='ps aux | grep ruby'
 
-# Moving around
-alias cdb='cd -'
-
 # Show human friendly numbers and colors
 alias df='df -h'
 alias ll='ls -lGh'
@@ -159,6 +156,7 @@ alias srdmt='spring rake db:migrate db:test:prepare'
 alias http="http --pretty=all"
 alias pycclean='find . -name "*.pyc" -exec rm {} \;'
 alias history='history -5000'
+alias slogit='cd /Users/_phil/Documents/projects/slogger && ./slogger -s'
 
 # Virtualenv
 

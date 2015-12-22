@@ -1,0 +1,2 @@
+Bundle "https://github.com/fatih/vim-go.git"
+Bundle "https://github.com/chriskempson/vim-tomorrow-theme.git"

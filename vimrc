@@ -64,9 +64,9 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 filetype plugin on
 filetype indent on
@@ -117,5 +117,25 @@ set ttyfast
 " ================ Wrapping ========================
 set formatoptions+=t colorcolumn=+1 tw=80
 
+" Spelling
+set spellfile=$HOME/.vim/dict.add
+
+" Phil
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+"
+"
+set mouse=a
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim

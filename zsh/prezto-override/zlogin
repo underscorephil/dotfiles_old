@@ -20,3 +20,6 @@ if (( $+commands[fortune] )); then
   print
 fi
 
+export GOPATH=$HOME/Code/go
+PATH=$PATH:$GOPATH/bin
+

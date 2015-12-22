@@ -87,9 +87,6 @@ nnoremap <D-)> f)ci)
 nnoremap <D-[> f[ci[
 nnoremap <D-]> f]ci]
 
-"Go to last edit location with ,.
-nnoremap ,. '.
-
 "When typing a string, your quotes auto complete. Move past the quote
 "while still in insert mode by hitting Ctrl-a. Example:
 "
