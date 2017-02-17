@@ -9,7 +9,7 @@ if [ ! -d "$HOME/.yadr" ]; then
 
     ## Install specific packages
     if [[ "$(uname)" == "Darwin" ]]; then
-	sudo ./blueutil/Install.command
+	#sudo ./blueutil/Install.command
     fi
 else
     echo "YADR is already installed"
