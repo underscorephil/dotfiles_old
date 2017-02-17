@@ -8,9 +8,9 @@ if [ ! -d "$HOME/.yadr" ]; then
     rake install
 
     ## Install specific packages
-    if [[ "$(uname)" == "Darwin" ]]; then
+   # if [[ "$(uname)" == "Darwin" ]]; then
 	#sudo ./blueutil/Install.command
-    fi
+   # fi
 else
     echo "YADR is already installed"
 fi
