@@ -127,4 +127,9 @@
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
-	required = true
+    required = true
+
+# added to try and install voidmap, not sure if i need it
+#[url "git@github.com:"]
+#        insteadOf = https://github.com
+

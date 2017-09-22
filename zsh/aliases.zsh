@@ -161,3 +161,5 @@ alias slogit='cd /Users/_phil/Documents/projects/slogger && ./slogger -s'
 # Virtualenv
 
 alias avenv="source ./venv/bin/activate"
+
+alias restartdns="sudo killall -HUP mDNSResponde"

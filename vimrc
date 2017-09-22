@@ -33,9 +33,11 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+let mapleader=','
+nmap \ ,
+
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundle.vim
@@ -67,6 +69,7 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set expandtab
 
 filetype plugin on
 filetype indent on
@@ -137,5 +140,27 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 "
 "
 set mouse=a
+
+" Mimic Emacs Line Editing in Insert Mode Only
+inoremap <C-A> <Home>
+inoremap <C-B> <Left>
+inoremap <C-E> <End>
+inoremap <C-F> <Right>
+inoremap <C-K> <Esc>lDa
+inoremap <C-U> <Esc>d0xi
+inoremap <C-Y> <Esc>Pa
+inoremap <C-X><C-S> <Esc>:w<CR>a
+
+" change spell check style cause that red is fucking insane
+hi clear SpellBad
+hi SpellBad cterm=underline
+
+" testing a new binding for esc
+:imap \a <Esc>
+
+" open nerd tree
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+
