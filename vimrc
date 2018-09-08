@@ -77,8 +77,8 @@ filetype indent on
 " Display tabs and trailing spaces visually
 set list listchars=tab:»·,trail:·,extends:$,nbsp:=
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
+" set nowrap       "Don't wrap lines
+" set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
@@ -103,8 +103,8 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Spelling ========================
 "
-set spell spelllang=en_us
-autocmd FileType gitcommit setlocal spell
+"set spell spelllang=en_us
+"autocmd FileType gitcommit setlocal spell
 
 " ================ Scrolling ========================
 
