@@ -1,1 +1,1 @@
-prompt pure
+prompt peepcode

@@ -125,9 +125,10 @@
 	name = Phil Jackson
 	email = github@underscorephil.com
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
     required = true
+	process = git-lfs filter-process
 
 # added to try and install voidmap, not sure if i need it
 #[url "git@github.com:"]
